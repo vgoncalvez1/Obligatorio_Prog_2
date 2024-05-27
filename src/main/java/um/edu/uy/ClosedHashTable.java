@@ -58,10 +58,9 @@ public class ClosedHashTable<K, V> implements ClosedHash<K, V>{
     public V remove(K key) {
         int index = getIndex(key);
         for (int i = 0; i < table.length; i++){
-            int probeIndex = (index + 1) % table.length{
-                if (table[probeIndex] == null){
-                    return null;
-                }
+            int probeIndex = (index + 1) % table.length;
+            if (table[probeIndex] == null){
+                return null;
             }
             if (table[probeIndex].key.equals(key)){
                 V value = table[probeIndex].value;

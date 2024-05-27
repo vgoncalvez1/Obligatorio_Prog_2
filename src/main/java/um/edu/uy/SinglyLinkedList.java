@@ -64,7 +64,7 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
         }else {
             Node current = head;
             while (current.next != tail){
-                current = current.next
+                current = current.next;
             }
             tail = current;
             tail.next = null;

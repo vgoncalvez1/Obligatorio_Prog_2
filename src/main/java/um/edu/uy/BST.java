@@ -48,7 +48,7 @@ public class BST<T extends  Comparable<T>> implements BinarySearchTree<T>{
 
     @Override
     public void delete(T element) {
-        root = delete(root, element);
+        root = delate(root, element);
     }
 
     private Node delate(Node node, T element){
