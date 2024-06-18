@@ -3,67 +3,63 @@ package um.edu.uy.tad;
 import java.util.NoSuchElementException;
 
 public class SinglyLinkedList<T> implements LinkedList<T> {
-    private class Node{
-        T element;
+    private class Node {
+        T data;
         Node next;
 
-        Node(T element){
-            this.element = element;
+        Node(T data) {
+            this.data = data;
+            this.next = null;
         }
     }
 
     private Node head;
-    private Node tail;
-    private  int size;
-    @Override
-    public void addfrist(T element) {
-        Node newNode = new Node(element);
-        if (isEmpty()){
-            head = tail = newNode;
-        }else {
-            newNode.next = head;
-            head = newNode;
-        }
 
+    private Node tail;
+    private int size;
+
+    @Override
+    public void addfrist(T data) {
+        Node newNode = new Node(data);
+        newNode.next = head;
+        head = newNode;
     }
 
     @Override
-    public void addLast(T element) {
-        Node newNode = new Node(element);
-        if (isEmpty()){
-            head = tail = newNode;
-        }else{
-            tail.next = newNode;
-            tail = newNode;
+    public void addLast(T data) {
+        if (head == null) {
+            head = new Node(data);
+        } else {
+            Node current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = new Node(data);
         }
-        size ++;
+
     }
 
     @Override
     public T removeFrist() {
-        if (isEmpty()){
-            throw  new NoSuchElementException();
+        if (head == null) {
+            throw new NoSuchElementException("Lista esta vacia.");
         }
-        T element = head.element;
+        T data = head.data;
         head = head.next;
-        if (head == null){
-            tail = null;
-        }
-        size ++;
-        return element;
+        return data;
     }
 
     @Override
     public T removeLast() {
-        if (isEmpty()){
+        if (head == null) {
             throw new NoSuchElementException();
         }
-        T element = tail.element;
-        if (head == null){
+        T element = tail.data;
+        if (head == null) {
             head = tail = null;
-        }else {
+        } else {
             Node current = head;
-            while (current.next != tail){
+            while (current.next != tail) {
                 current = current.next;
             }
             tail = current;
@@ -75,18 +71,18 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
 
     @Override
     public T getFrist() {
-        if (isEmpty()){
-            throw new NoSuchElementException();
+        if (head == null) {
+            throw new NoSuchElementException("Lista esta vacia");
         }
-        return head.element;
+        return head.data;
     }
 
     @Override
     public T getLast() {
-        if (isEmpty()){
+        if (isEmpty()) {
             throw new NoSuchElementException();
         }
-        return tail.element;
+        return tail.data;
     }
 
     @Override
@@ -96,8 +92,6 @@ public class SinglyLinkedList<T> implements LinkedList<T> {
 
     @Override
     public boolean isEmpty() {
-        return size == 0;
+        return head == null;
     }
-
-
 }

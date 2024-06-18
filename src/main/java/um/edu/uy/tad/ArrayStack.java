@@ -5,45 +5,44 @@ import um.edu.uy.tad.Stack;
 import java.util.NoSuchElementException;
 
 public class ArrayStack<T> implements Stack<T> {
-    private T[] elements;
-    private int size;
+    private T[] array;
+    private int top;
+
     public ArrayStack(int capacity){
-        elements = (T[]) new Object[capacity];
+        array = (T[]) new Object[capacity];
+        top = -1;
     }
 
     @Override
     public void push(T element) {
-        if (size == elements.length){
-            throw new IllegalStateException("Stack esta lleno");
+        if (top == array.length - 1){
+            throw new NoSuchElementException("Stack esta lleno");
         }
-        elements[size++] = element;
     }
 
     @Override
     public T pop() {
-        if (isEmpty()){
-            throw new NoSuchElementException();
+        if (top == -1){
+            throw new NoSuchElementException("Stack esta vacia");
         }
-        T element = elements[--size];
-        elements[size] = null;
-        return element;
+        return array[top--];
     }
 
     @Override
     public T peek() {
-        if (isEmpty()){
-            throw new NoSuchElementException();
+        if (top == -1){
+            throw new NoSuchElementException("Stack esta vacia");
         }
-        return elements[size - 1];
+        return array[top];
     }
 
     @Override
     public boolean isEmpty() {
-        return size == 0;
+        return top == -1;
     }
 
     @Override
     public int size() {
-        return size;
+        return top;
     }
 }

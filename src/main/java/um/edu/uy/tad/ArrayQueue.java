@@ -3,43 +3,43 @@ package um.edu.uy.tad;
 import java.util.NoSuchElementException;
 
 public class ArrayQueue<T> implements Queue<T> {
-    private T[] elements;
+    private T[] array;
     private int size;
     private int front;
     private int rear;
     public ArrayQueue(int Capacity){
-        elements = (T[]) new Object[Capacity];
+        array = (T[]) new Object[Capacity];
         front = 0;
         rear = -1;
+        size = 0;
     }
     @Override
-    public void enqueue(T element) {
-        if (size == elements.length){
-            throw new IllegalStateException("Queue is full");
+    public void enqueue(T data) {
+        if (size == array.length){
+            throw new NoSuchElementException("Queue esta lleno");
         }
-        rear = (rear + 1) % elements.length;
-        elements[rear] = element;
+        rear = (rear + 1) % array.length;
+        array[rear] = data;
         size++;
     }
 
     @Override
     public T dequeue() {
-        if (isEmpty()){
-            throw new NoSuchElementException();
+        if (size == 0){
+            throw new NoSuchElementException("Queue esta vacio");
         }
-        T element = elements[front];
-        elements[front] = null;
-        front = (front + 1) % elements.length;
-        size--;
-        return element;
+        T data = array[front];
+        front = (front + 1) % array.length;
+        size --;
+        return data;
     }
 
     @Override
     public T fris() {
-        if (isEmpty()){
+        if (size == 0){
             throw new NoSuchElementException();
         }
-        return elements[front];
+        return array[front];
     }
 
     @Override
