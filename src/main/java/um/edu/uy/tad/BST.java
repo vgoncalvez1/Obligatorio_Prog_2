@@ -1,6 +1,8 @@
-package um.edu.uy;
+package um.edu.uy.tad;
 
-public class BST<T extends  Comparable<T>> implements BinarySearchTree<T>{
+import um.edu.uy.tad.BinarySearchTree;
+
+public class BST<T extends  Comparable<T>> implements BinarySearchTree<T> {
     private class Node{
         T element;
         Node left;

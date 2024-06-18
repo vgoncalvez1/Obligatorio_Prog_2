@@ -1,4 +1,4 @@
-package um.edu.uy;
+package um.edu.uy.tad;
 
 public interface Stack<T> {
     void push(T element);

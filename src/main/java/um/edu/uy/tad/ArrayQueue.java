@@ -1,8 +1,8 @@
-package um.edu.uy;
+package um.edu.uy.tad;
 
 import java.util.NoSuchElementException;
 
-public class ArrayQueue<T> implements Queue<T>{
+public class ArrayQueue<T> implements Queue<T> {
     private T[] elements;
     private int size;
     private int front;

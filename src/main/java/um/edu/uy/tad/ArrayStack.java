@@ -1,8 +1,10 @@
-package um.edu.uy;
+package um.edu.uy.tad;
+
+import um.edu.uy.tad.Stack;
 
 import java.util.NoSuchElementException;
 
-public class ArrayStack<T> implements Stack<T>{
+public class ArrayStack<T> implements Stack<T> {
     private T[] elements;
     private int size;
     public ArrayStack(int capacity){

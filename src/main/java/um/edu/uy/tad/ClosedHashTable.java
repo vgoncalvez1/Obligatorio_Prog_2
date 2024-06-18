@@ -1,6 +1,6 @@
-package um.edu.uy;
+package um.edu.uy.tad;
 
-public class ClosedHashTable<K, V> implements ClosedHash<K, V>{
+public class ClosedHashTable<K, V> implements ClosedHash<K, V> {
     private static final int INITIAL_CAPACITY = 16;
     private Entry<K, V>[] table;
     private int size;

@@ -1,4 +1,4 @@
-package um.edu.uy;
+package um.edu.uy.tad;
 
 public interface ClosedHash<K, V>{
     void put(K key, V value);
