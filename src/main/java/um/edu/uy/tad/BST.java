@@ -12,9 +12,9 @@ public class BST<T extends  Comparable<T>> implements BinarySearchTree<T> {
             this.left = this.Right = null;
         }
     }
-
     private Node root;
     private int size;
+
     @Override
     public void insert(T data) {
         root = insert(root, data);
@@ -40,13 +40,12 @@ public class BST<T extends  Comparable<T>> implements BinarySearchTree<T> {
         if (root == null){
             return false;
         }
-        if (data.compareTo(root.data) < 0){
-            return search(root.left, data);
-        }else if (data.compareTo(root.data) > 0){
-            return search(root.Right, data);
-        }else {
+        if (data.compareTo(root.data) == 0){
             return true;
         }
+        return data.compareTo(root.data) < 0 ? search(root.left, data)
+                : search(root.Right, data);
+
     }
 
     @Override

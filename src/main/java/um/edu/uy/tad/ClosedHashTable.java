@@ -1,12 +1,12 @@
 package um.edu.uy.tad;
 
+import java.util.NoSuchElementException;
+
 public class ClosedHashTable<K, V> implements ClosedHash<K, V> {
     private static final int INITIAL_CAPACITY = 16;
-    private Entry<K, V>[] table;
-    private int size;
 
     private static class Entry<K, V>{
-        final K key;
+        K key;
         V value;
 
         Entry(K key, V value){
@@ -14,9 +14,13 @@ public class ClosedHashTable<K, V> implements ClosedHash<K, V> {
             this.value = value;
         }
     }
+    private Entry<K, V>[] table;
+    private int size;
 
-    public ClosedHashTable(){
-        table = new  Entry[INITIAL_CAPACITY];
+    @SuppressWarnings("Inchequable")
+    public ClosedHashTable(int capacidad){
+        table = (Entry<K, V>[]) new Entry[capacidad];
+        size = 0;
     }
     @Override
     public void put(K key, V value) {
@@ -31,7 +35,7 @@ public class ClosedHashTable<K, V> implements ClosedHash<K, V> {
                 return;
             }
         }
-        throw new IllegalStateException("Table is full");
+        throw new NoSuchElementException("Table esta llena");
     }
 
     @Override
